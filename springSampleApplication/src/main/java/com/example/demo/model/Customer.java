@@ -7,6 +7,15 @@ public class Customer {
 	
 	public Customer(){
 	}
+	
+	
+	public Customer(String name, String city) {
+		super();
+		this.name = name;
+		this.city = city;
+	}
+
+
 	public String getName() {
 		return name;
 	}
