@@ -22,11 +22,11 @@ public class CustomerController {
 	
 	
 	@GetMapping("/cutomer")
-	public ResponseEntity<List> getEmp() {
+	public List<Customer> getEmp() {
 		
 		List<Customer> list=customerService.getAllCustomers();
 		
-		return new ResponseEntity<List>(list,HttpStatus.OK);
+		return list;
 	}
 	
 	@GetMapping("/cutomer/{custid}/{emp}")
