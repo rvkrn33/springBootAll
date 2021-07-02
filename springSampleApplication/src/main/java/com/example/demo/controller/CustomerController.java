@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,6 +29,31 @@ public class CustomerController {
 		
 		return list;
 	}
+	
+	
+	@GetMapping("/customer/{city}")
+	public ResponseEntity<Customer> getByCity(@PathVariable String city) {
+		
+		Optional<Customer> cust=customerService.getByCity(city);
+		if(cust.isPresent())
+			return new ResponseEntity<Customer>(cust.get(),HttpStatus.OK);
+		else
+			return new ResponseEntity<Customer>(HttpStatus.NOT_FOUND);
+	
+	}
+	
+	@GetMapping("/customer/{name}/{city}")
+	public Customer getByNameAndCity(@PathVariable String name,@PathVariable String city) {
+		
+		return customerService.getByCity(name,city);
+	}
+	
+	@GetMapping("/customers/{name}/{city}")
+	public Customer getByNameOrCity(@PathVariable String name,@PathVariable String city) {
+		
+		return customerService.getByNameOrCity(name,city);
+	}
+	
 	
 	@GetMapping("/cutomer/{custid}/{emp}")
 	public ResponseEntity<String> getEmpId(@PathVariable String custid,String a) {

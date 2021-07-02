@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -33,6 +34,22 @@ public class CustomerServiceImpl implements CustomerService{
 	return	customerRepository.findAll();
 		
 		// return customerRepo.getAllCustomers();
+	}
+	
+	//get City
+	public Optional<Customer> getByCity(String city) {
+		return customerRepository.findByCity(city);
+	}
+	
+	public Customer getByNameOrCity(String name, String city) {
+		return customerRepository.findByNameOrCity(name, city);
+		//return customerRepository.findByNameAndCity(name,city);
+	}
+
+	@Override
+	public Customer getByCity(String name, String city) {
+		// TODO Auto-generated method stub
+		return customerRepository.findByNameAndCity(name,city);
 	}
 
 }
