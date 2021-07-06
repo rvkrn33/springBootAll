@@ -6,12 +6,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.exceptions.CustomerExceptions;
 import com.example.demo.model.Customer;
 import com.example.demo.service.CustomerService;
 
@@ -32,13 +34,13 @@ public class CustomerController {
 	
 	
 	@GetMapping("/customer/{city}")
-	public ResponseEntity<Customer> getByCity(@PathVariable String city) {
+	public ResponseEntity getByCity(@PathVariable String city) throws CustomerExceptions {
 		
 		Optional<Customer> cust=customerService.getByCity(city);
 		if(cust.isPresent())
 			return new ResponseEntity<Customer>(cust.get(),HttpStatus.OK);
 		else
-			return new ResponseEntity<Customer>(HttpStatus.NOT_FOUND);
+			throw new CustomerExceptions("data Not found");
 	
 	}
 	
@@ -66,4 +68,6 @@ public class CustomerController {
 	public ResponseEntity<String> saveCustomer(@RequestBody Customer cust){
 		return new ResponseEntity<String>("Customer Created",HttpStatus.CREATED);
 	}
+	
+	
 }
