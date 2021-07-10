@@ -25,6 +25,12 @@ public class CustomerController {
 	CustomerService customerService;
 	
 	
+	
+	@GetMapping("/")
+	public String home() {
+		return "Hello .................";
+	}
+	
 	@GetMapping("/cutomer")
 	public List<Customer> getEmp() {
 		

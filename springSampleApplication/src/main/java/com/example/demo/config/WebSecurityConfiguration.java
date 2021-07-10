@@ -12,7 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
-	
+	/*
 	@Autowired
 	UserDetailsService userDetailsService;
 	
@@ -31,8 +31,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		http.authorizeRequests()
-		.antMatchers("/")
-		.permitAll()
 		.antMatchers("/customer/**")
 		.hasAuthority("ADMIN")
 		.antMatchers("/cutomer")
@@ -41,5 +39,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 		.authenticated()
 		.and().httpBasic();
 	}
-
+*/
+	
+	@Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+         .anyRequest().authenticated()
+         .and()
+         .oauth2Login();
+    }
 }
