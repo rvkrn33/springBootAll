@@ -10,7 +10,7 @@ import com.example.demo.dao.UserRepository;
 import com.example.demo.model.CustomUserDetails;
 import com.example.demo.model.User;
 
-@Service
+//@Service
 public class CustomUserServiceDetails implements UserDetailsService{
 
 	@Autowired
