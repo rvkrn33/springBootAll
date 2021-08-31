@@ -1,7 +1,7 @@
 package com.prod;
 
 public class Product {
-//prod
+//prod.
 	private int id;
 	private String name;
 	private double price;
