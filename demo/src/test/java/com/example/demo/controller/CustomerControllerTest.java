@@ -39,8 +39,8 @@ class CustomerControllerTest {
 	  public void testGetAllCustomers() throws Exception {
         this.mockMvc.perform(get("/getCustomer/3"))
                     .andExpect(status().isOk())
-                    .andExpect(jsonPath("$.name").value("ajit"))
-        		    .andExpect(jsonPath("$.address").value("Goa"));
+                    .andExpect(jsonPath("$.name").value("rajesh"))
+        		    .andExpect(jsonPath("$.address").value("Mumbai"));
         		
 	    }
 }

@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Customer;
-import com.example.demo.repository.CustRepo;
 import com.example.demo.repository.CustomerRepository;
 
 /**
@@ -33,6 +32,7 @@ public class CustomerServiceImpl implements CustomerService{
 
 	@Override
 	public List<Customer> getCustomerList() {
+		System.out.println("Execute ");
 		return custRepository.findAll();
 	}
 
