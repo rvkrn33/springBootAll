@@ -53,50 +53,39 @@ public class DemoApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
-		//prepareData();
+		prepareData();
 		
 		//oneToOneMapping();
 		
 		//oneToMany();
 	
-		Student s1=new Student();
-		s1.setId(201L);
-		
-		Student s2=new Student();
-		s2.setId(202L);
-		
-		Course c1=new Course();
-		c1.setId(501L);
-		
-		Course c2=new Course();
-		c2.setId(502L);
-		
-		Set<Student> studSet= new HashSet();
-		studSet.add(s1);  studSet.add(s2);
-		
-		Set<Course> cSet= new HashSet();
-		cSet.add(c1);  cSet.add(c2);
-		
-		s1.setLikedCourses(cSet);
-		s2.setLikedCourses(cSet);
-		
-		c1.setLikes(studSet);
-		c2.setLikes(studSet);
-		
-
-		studRepo.save(s1);
-		studRepo.save(s2);
-		
-		List<Student> sList=studRepo.findAll();
-		
-		for(Student st: sList)
-		{
-			System.out.println("Student Id --> "+st.getId());
-			
-			for(Course c: st.getLikedCourses())
-				System.out.println("Course : "+c.getId());
-		}
-	}
+		/*
+		 * Student s1=new Student(); s1.setId(201L);
+		 * 
+		 * Student s2=new Student(); s2.setId(202L);
+		 * 
+		 * Course c1=new Course(); c1.setId(501L);
+		 * 
+		 * Course c2=new Course(); c2.setId(502L);
+		 * 
+		 * Set<Student> studSet= new HashSet(); studSet.add(s1); studSet.add(s2);
+		 * 
+		 * Set<Course> cSet= new HashSet(); cSet.add(c1); cSet.add(c2);
+		 * 
+		 * s1.setLikedCourses(cSet); s2.setLikedCourses(cSet);
+		 * 
+		 * c1.setLikes(studSet); c2.setLikes(studSet);
+		 * 
+		 * 
+		 * studRepo.save(s1); studRepo.save(s2);
+		 * 
+		 * List<Student> sList=studRepo.findAll();
+		 * 
+		 * for(Student st: sList) { System.out.println("Student Id --> "+st.getId());
+		 * 
+		 * for(Course c: st.getLikedCourses())
+		 * System.out.println("Course : "+c.getId()); }
+		 */	}
 	
 
 	private void oneToMany() {

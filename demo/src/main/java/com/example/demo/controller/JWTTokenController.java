@@ -14,7 +14,7 @@ import com.example.demo.model.JWTResponse;
 import com.example.demo.service.UserJwtService;
 import com.example.demo.utility.JWTUtility;
 
-//@RestController
+@RestController
 public class JWTTokenController {
 
 	 @Autowired
