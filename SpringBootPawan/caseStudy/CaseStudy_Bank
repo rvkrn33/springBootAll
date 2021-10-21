@@ -1,0 +1,132 @@
+
+
+
+Case Study 
+
+Bank (CRUD - operations)
+(bankId,bankName, BranchName, Address, phno, IFSCCode)
+
+Bank.java (Entity) --> Bank 
+BankController
+
+Customer (CRUD)
+(custId, bankId, name, address, email, phone, idProofType,idProffNumber);
+
+Account (CRUD)
+(accountNo, custId, AccountType, status, lastTransactionDate, balance, minBalance);
+
+Transaction (CR)
+(txnId, accountNo, txnType, txnSource, txnSourceBank, txnAmount, txnDate, txnCount)
+
+-Add banks 
+url - http://localhost:8085/bank  endpoint 
+method - post 
+request body 
+{
+		"bankName" : "Axis", 
+		"BranchName":"Katraj",
+		"Address": "Pune", 
+		"phno": 8565235698, 
+		IFSCCode" : "AXIS854521"
+}
+
+bank.html
+ 
+
+BankController <- requestbody  -> JSON -> java object 
+
+
+Response body 
+{
+		"messsage":"Record added" 
+}
+
+> Fetch bank details >> method - get  (/banks) (/bank/{id})
+> update bank details >> method - put (/bank)
+> delete bank details >> method - delete (/bank/{id})
+
+=============================
+
+-Opening Account - 
+url - /bank/openAccount
+method - post
+request body 
+{
+		"custId" : 101, 
+		"bankId" : 55622
+		"name" : "Ravikiran Patil"
+		"address" : "pune"
+		"email": "ravi@gmail.com"
+		"phone" : 8545125263
+		"idProofType" : "PANCard"
+		"idProffNumber" : "CFDGG8545H"
+}
+- Take request from UI side and save data into Customer table, Account table and make your first transaction 
+-Note : 
+ >> Account number is random 8 digit number 
+ >> AccountType hard coded value "SAVING"
+ >> Status is "Active" by default
+ >> Opening balance is "2000"
+ >> Minimum balance is "1000"
+ 
+ -Note 
+ >> First transaction happen during account opening 
+ >> txnType="CREDIT", txnSource="ONLINE", txnSourceBank="INTERNAL", txnAmount=2000
+
+
+Response Body
+
+{
+	"custId": 101
+	"accountNo" : 85451254,
+	"status" : "Active"
+	"balance" : 2000
+	"txnType" : "CREDIT"
+}
+
+
+> Fetch customer details >> method - get  (customers) (customer/{id})
+> update customer details >> method - put (/customer)
+> delete customer details >> method - delete (/customer/{id})
+------------------------
+Account API 
+- Update is not allowed
+> Fetch Account details >> method - get  (/accounts) 
+- serch byAccountNo (/account/{no})
+> delete Account details >> method - delete (/account/{no}) --> only status make as "Deactive"
+------------------------
+
+Transaction API
+> Create new transaction
+url - transaction
+Method - post
+request body 
+{
+	"accountNo" : 84521452,
+	"txnType": "DEBIT", 
+	"txnSource": "GooglePay", 
+	"txnSourceBank" : "ICICI", 
+	"txnAmount":300
+}
+
+note : 
+> txnType, txnDate, txnCount -> Auto generated
+> check minumn balance criteria from Account table
+> update balance into Account table
+
+Respose body {
+	"message":"transaction successfully done"
+}
+
+> Fetch customer details >> method - get  (customers) (customer/{id})
+> update customer details >> method - put (/customer)
+> delete customer details >> method - delete (/customer/{id})
+------------------------
+
+
+Extra 
+- provide validation
+- provide exception handling
+- provide transaction history download
+
+
