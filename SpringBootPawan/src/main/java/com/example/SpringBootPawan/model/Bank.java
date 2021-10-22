@@ -1,12 +1,30 @@
 package com.example.SpringBootPawan.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="BankTable")
 public class Bank {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int bankId;
+	
+	@Column
 	private String bankName;
+	
+	@Column
 	private String branchName;
+	@Column
 	private String address;
+	@Column
 	private long phno;
+	@Column
 	private String IFSCCode;
 	
 	public int getBankId() {
