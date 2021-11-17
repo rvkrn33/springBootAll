@@ -8,4 +8,6 @@ import com.example.SpringBootPawan.model.Bank;
 @Repository
 public interface BankRespository extends JpaRepository<Bank, Integer>{
 
+	public Bank findByBankIdOrBankName(int id,String any);
+
 }
