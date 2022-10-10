@@ -1,0 +1,75 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+
+	<!-- <bean id="emp" name="empBean" class="com.ioc.container.Employee">
+		<property name="empName" value="Ravikiran"></property>
+	</bean>
+ -->
+ 
+ <!-- <bean id="emp" name="empBean" class="com.ioc.container.Employee"  scope="prototype">
+		<property name="empName" value="Patil"></property>
+		<constructor-arg index="0" value="Ravikiran"/>
+    <constructor-arg index="1" value="1234"/>
+
+	</bean> -->
+	
+	<bean id="emp" name="empBean" class="com.ioc.container.Employee"  >
+		<property name="empName" value="Patil"></property>
+		<property name="address" ref="add"></property>
+	</bean>
+	
+	<bean id= "add" class="com.ioc.container.Address" scope="prototype">
+		<property name="city" value="Pune"></property>
+		<property name="street" value ="abc"></property>
+	</bean>
+	
+	<!-- Definition for javaCollection -->
+   <bean id = "collectionBean" class = "com.ioc.container.CollectionSample">
+      
+      <!-- results in a setAddressList(java.util.List) call -->
+      <property name = "addressList">
+         <list>
+            <value>INDIA</value>
+            <value>Pakistan</value>
+            <value>USA</value>
+            <value>USA</value>
+         </list>
+      </property>
+
+      <!-- results in a setAddressSet(java.util.Set) call -->
+      <property name = "addressSet">
+         <set>
+            <value>INDIA</value>
+            <value>Pakistan</value>
+            <value>USA</value>
+            <value>USA</value>
+         </set>
+      </property>
+
+      <!-- results in a setAddressMap(java.util.Map) call -->
+      <property name = "addressMap">
+         <map>
+            <entry key = "1" value = "INDIA"/>
+            <entry key = "2" value = "Pakistan"/>
+            <entry key = "3" value = "USA"/>
+            <entry key = "4" value = "USA"/>
+         </map>
+      </property>
+      
+      <!-- results in a setAddressProp(java.util.Properties) call -->
+      <property name = "addressProp">
+         <props>
+            <prop key = "one">INDIA</prop>
+            <prop key = "one">INDIA</prop>
+            <prop key = "two">Pakistan</prop>
+            <prop key = "three">USA</prop>
+            <prop key = "four">USA</prop>
+         </props>
+      </property>
+   </bean>
+	
+ 
+</beans>
